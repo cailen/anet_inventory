@@ -219,9 +219,9 @@ or environment variables (ANET_PUBLIC_KEY and ANET_PRIVATE_KEY)\n''')
         elif self.args.plans:
             self.load_from_atlantic_net('plans')
             json_data = {'plans': self.data['plans']}
-        elif self.args.ssh_keys:
-            self.load_from_atlantic_net('ssh_keys')
-            json_data = {'ssh_keys': self.data['ssh_keys']}
+        elif self.args.ssh-keys:
+            self.load_from_atlantic_net('ssh-keys')
+            json_data = {'ssh-keys': self.data['ssh-keys']}
         elif self.args.all:
             self.load_from_atlantic_net()
             json_data = self.data
@@ -312,7 +312,7 @@ or environment variables (ANET_PUBLIC_KEY and ANET_PRIVATE_KEY)\n''')
 
         # Make --list default if none of the other commands are specified
         if (not self.args.cloudservers and not self.args.images and 
-                not self.args.plans and not self.args.ssh_keys and
+                not self.args.plans and not self.args.ssh-keys and
                 not self.args.all and not self.args.host):
             self.args.list = True
 
@@ -342,8 +342,8 @@ or environment variables (ANET_PUBLIC_KEY and ANET_PRIVATE_KEY)\n''')
             self.data['plans'] = self.manager.plans()
             print self.data['plans']
             self.cache_refreshed = True
-        if resource == 'ssh_keys' or resource is None:
-            self.data['ssh_keys'] = self.manager.all_ssh_keys()
+        if resource == 'ssh-keys' or resource is None:
+            self.data['ssh-keys'] = self.manager.all_ssh_keys()
             self.cache_refreshed = True
 
     def build_inventory(self):
