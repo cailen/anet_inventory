@@ -306,10 +306,9 @@ or environment variables (ANET_PUBLIC_KEY and ANET_PRIVATE_KEY)\n''')
             self.private_key = self.args.private_key
 
         # Make --list default if none of the other commands are specified
-        if (not self.args.cloudservers and not self.args.regions and
-                not self.args.images and not self.args.sizes and
-                not self.args.ssh_keys and not self.args.all and 
-                not self.args.host):
+        if (not self.args.cloudservers and not self.args.images and 
+                not self.args.sizes and not self.args.ssh_keys and
+                not self.args.all and not self.args.host):
             self.args.list = True
 
 
