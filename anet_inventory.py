@@ -335,7 +335,8 @@ or environment variables (ANET_PUBLIC_KEY and ANET_PRIVATE_KEY)\n''')
             self.data['cloudservers'] = self.manager.all_active_cloudservers()
             self.cache_refreshed = True
         if resource == 'images' or resource is None:
-            self.data['images'] = self.manager.all_images(filter=None)
+            #self.data['images'] = self.manager.all_images(filter=None)
+            self.data['images'] = self.manager.all_images()
             self.cache_refreshed = True
         if resource == 'plans' or resource is None:
             self.data['plans'] = self.manager.plans()
