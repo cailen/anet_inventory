@@ -206,7 +206,7 @@ or environment variables (ANET_PUBLIC_KEY and ANET_PRIVATE_KEY)\n''')
                     sys.stderr.write('''Cache is empty and --force-cache was specified\n''')
                     sys.exit(-1)
 
-        self.manager = AnetManager(None, self.public_key, self.private_key)
+        self.manager = AnetManager(None, self.public_key, self.private_key, "2010-12-30")
 
         # Pick the json_data to print based on the CLI command
         if self.args.cloudservers:
