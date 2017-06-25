@@ -219,7 +219,7 @@ or environment variables (ANET_PUBLIC_KEY and ANET_PRIVATE_KEY)\n''')
         elif self.args.plans:
             self.load_from_atlantic_net('plans')
             json_data = {'plans': self.data['plans']}
-        elif self.args.ssh-keys:
+        elif self.args.ssh_keys:
             self.load_from_atlantic_net('ssh-keys')
             json_data = {'ssh-keys': self.data['ssh-keys']}
         elif self.args.all:
@@ -312,7 +312,7 @@ or environment variables (ANET_PUBLIC_KEY and ANET_PRIVATE_KEY)\n''')
 
         # Make --list default if none of the other commands are specified
         if (not self.args.cloudservers and not self.args.images and 
-                not self.args.plans and not self.args.ssh-keys and
+                not self.args.plans and not self.args.ssh_keys and
                 not self.args.all and not self.args.host):
             self.args.list = True
 
