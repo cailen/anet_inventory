@@ -340,7 +340,6 @@ or environment variables (ANET_PUBLIC_KEY and ANET_PRIVATE_KEY)\n''')
             self.cache_refreshed = True
         if resource == 'plans' or resource is None:
             self.data['plans'] = self.manager.plans()
-            print self.data['plans']
             self.cache_refreshed = True
         if resource == 'ssh-keys' or resource is None:
             self.data['ssh-keys'] = self.manager.all_ssh_keys()
