@@ -386,7 +386,7 @@ or environment variables (ANET_PUBLIC_KEY and ANET_PRIVATE_KEY)\n''')
         info = {}
         for k, v in cloudserver.items():
             for l, w in v.items():
-            info['anet_'+l] = w
+                info['anet_'+l] = w
 
         return {'cloudserver': info}
 
