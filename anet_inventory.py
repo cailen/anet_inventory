@@ -29,7 +29,7 @@ It can be specified in the INI file or with the following environment variables:
     export ANET_PUBLIC_KEY='abc123' and
     export ANET_PRIVATE_KEY='abc123'
 
-Alternatively, it can be passed on the command-line with --api-token.
+Alternatively, they can be passed on the command-line with --public_key and --private_key.
 
 If you specify Atlantic.Net credentials in the INI file, a handy way to
 get them into your environment (e.g., to use the anet_inventory module)
@@ -273,9 +273,9 @@ or environment variables (ANET_PUBLIC_KEY and ANET_PRIVATE_KEY)\n''')
         ''' Reads the settings from environment variables '''
         # Setup credentials
         if os.getenv("ANET_PUBLIC_KEY"):
-            self.api_token = os.getenv("ANET_PUBLIC_KEY")
+            self.public_key = os.getenv("ANET_PUBLIC_KEY")
         if os.getenv("ANET_PRIVATE_KEY"):
-            self.api_token = os.getenv("ANET_PRIVATE_KEY")
+            self.private_key = os.getenv("ANET_PRIVATE_KEY")
 
     def read_cli_args(self):
         ''' Command line argument processing '''
