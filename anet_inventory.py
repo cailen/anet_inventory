@@ -385,7 +385,8 @@ or environment variables (ANET_PUBLIC_KEY and ANET_PRIVATE_KEY)\n''')
         # Put all the information in a 'anet_' namespace
         info = {}
         for k, v in cloudserver.items():
-            info['anet_'+k] = v
+            for l, w in v.items():
+            info['anet_'+l] = w
 
         return {'cloudserver': info}
 
