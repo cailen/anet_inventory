@@ -68,6 +68,7 @@ When run against a specific host, this script returns the following variables:
  - anet_vm_ip_gateway
  - anet_vm_ip_subnet
  - anet_vm_network_req
+ - anet_vm_name
  - anet_vm_os_architecture
  - anet_vm_plan_name
  - anet_vm_ram_req
@@ -361,7 +362,7 @@ or environment variables (ANET_PUBLIC_KEY and ANET_PRIVATE_KEY)\n''')
             self.inventory['all']['hosts'].append(dest)
 
             self.inventory[cloudserver['InstanceId']] = dest
-            self.inventory[cloudserver['name']] = dest
+            self.inventory[cloudserver['anet_vm_description']] = dest
 
             # groups that are always present
             for group in [
