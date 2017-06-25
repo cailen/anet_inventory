@@ -361,8 +361,8 @@ or environment variables (ANET_PUBLIC_KEY and ANET_PRIVATE_KEY)\n''')
 
             self.inventory['all']['hosts'].append(dest)
 
-            self.inventory[cloudserver['InstanceId']] = dest
-            self.inventory[cloudserver['vm_description']] = dest
+            #self.inventory[cloudserver['InstanceId']] = dest
+            #self.inventory[cloudserver['vm_description']] = dest
 
             # groups that are always present
             for group in [
