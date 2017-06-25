@@ -374,17 +374,6 @@ or environment variables (ANET_PUBLIC_KEY and ANET_PRIVATE_KEY)\n''')
                     self.inventory[group] = {'hosts':[], 'vars': {}}
                 self.inventory[group]['hosts'].append(dest)
 
-            # groups that are not always present
-            for group in [
-                            cloudserver['vm_image'],
-                            cloudserver['vm_image_display_name']
-                         ]:
-                if group:
-                    image = 'image_' + self.to_safe(group)
-                    if image not in self.inventory:
-                        self.inventory[image] = {'hosts':[], 'vars': {}}
-                    self.inventory[image]['hosts'].append(dest)
-
     def load_cloudserver_variables_for_host(self):
         '''Generate a JSON response to a --host call'''
         host = int(self.args.host)
