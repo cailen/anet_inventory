@@ -8,7 +8,7 @@ Generates Ansible inventory of Atlantic.Net Cloudservers.
 
 In addition to the --list and --host options used by Ansible, there are options
 for generating JSON of other Atlantic.Net data.  This is useful when creating
-cloudservers.  For example, --regions will return all the Atlantic.Net Regions.
+cloudservers.  For example, --plans will return all the Atlantic.Net Plans.
 This information can also be easily found in the cache file, whose default
 location is /tmp/ansible-digital_ocean.cache).
 
@@ -24,7 +24,7 @@ found.  You can force this script to use the cache with --force-cache.
 Configuration is read from `anet_inventory.ini`, then from environment variables,
 then and command-line arguments.
 
-Most notably, the Atlantic.Net Public Key and Private Key must both be specified. 
+Most notably, the Atlantic.Net Public Key and Private Key must both be specified.
 It can be specified in the INI file or with the following environment variables:
     export ANET_PUBLIC_KEY='abc123' and
     export ANET_PRIVATE_KEY='abc123'
@@ -183,15 +183,16 @@ class AtlanticNetInventory(object):
         self.read_cli_args()
 
         # Verify credentials were set
-        if not hasattr(self, 'api_token'):
+        if not hasattr(self, 'public_key') or not hasattr(self, 'private_key'):
             sys.stderr.write('''Could not find values for Atlantic.Net public_key and private_key.
-They must be specified via either ini file, command line argument (--pubic_key and --private_key),
+They must be specified via either ini file, command line argument (--public_key and --private_key),
 or environment variables (ANET_PUBLIC_KEY and ANET_PRIVATE_KEY)\n''')
             sys.exit(-1)
 
         # env command, show Atlantic.Net credentials
         if self.args.env:
             print "ANET_PUBLIC_KEY=%s" % self.public_key
+            print "ANET_PRIVATE_KEY=%s" % self.private_key
             sys.exit(0)
 
         # Manage cache
@@ -214,7 +215,7 @@ or environment variables (ANET_PUBLIC_KEY and ANET_PRIVATE_KEY)\n''')
         elif self.args.images:
             self.load_from_atlantic_net('images')
             json_data = {'images': self.data['images']}
-        elif self.args.sizes:
+        elif self.args.plans:
             self.load_from_atlantic_net('plans')
             json_data = {'plans': self.data['plans']}
         elif self.args.ssh_keys:
@@ -253,6 +254,9 @@ or environment variables (ANET_PUBLIC_KEY and ANET_PRIVATE_KEY)\n''')
         # Credentials
         if config.has_option('atlantic_net', 'public_key'):
             self.public_key = config.get('atlantic_net', 'public_key')
+
+        if config.has_option('atlantic_net', 'private_key'):
+            self.private_key = config.get('atlantic_net', 'private_key')
 
         # Cache related
         if config.has_option('atlantic_net', 'cache_path'):
