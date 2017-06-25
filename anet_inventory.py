@@ -354,7 +354,7 @@ or environment variables (ANET_PUBLIC_KEY and ANET_PRIVATE_KEY)\n''')
                         }
 
         # add all cloudservers by id and name
-        for k, cloudserver in self.data['cloudservers']:
+        for cloudserver in self.data['cloudservers'].items():
             print cloudserver
             dest = cloudserver['vm_ip_address']
 
