@@ -376,18 +376,22 @@ or environment variables (ANET_PUBLIC_KEY and ANET_PRIVATE_KEY)\n''')
                 self.inventory[group]['hosts'].append(dest)
 
             for vm_image in cloudserver['vm_image']:
-                if 'debian' in vm_image.lower() and 'Debian' not in self.inventory:
-                    self.inventory['Debian'] = {'hosts':[], 'vars': {}}
-                self.inventory['Debian']['hosts'].append(dest)
-                if 'centos' in vm_image.lower() and 'Centos' not in self.inventory:
-                    self.inventory['Centos'] = {'hosts':[], 'vars': {}}
-                self.inventory['Centos']['hosts'].append(dest)
-                if 'pfsense' in vm_image.lower() and 'pfSense' not in self.inventory:
-                    self.inventory['pfSense'] = {'hosts':[], 'vars': {}}
-                self.inventory['pfSense']['hosts'].append(dest)
-                if 'windows' in vm_image.lower() and 'Windows' not in self.inventory:
-                    self.inventory['Windows'] = {'hosts':[], 'vars': {}}
-                self.inventory['Windows']['hosts'].append(dest)
+                if 'debian' in vm_image.lower():
+                    if 'Debian' not in self.inventory:
+                        self.inventory['Debian'] = {'hosts':[], 'vars': {}}
+                    self.inventory['Debian']['hosts'].append(dest)
+                if 'centos' in vm_image.lower():
+                    if 'Centos' not in self.inventory:
+                        self.inventory['Centos'] = {'hosts':[], 'vars': {}}
+                    self.inventory['Centos']['hosts'].append(dest)
+                if 'pfsense' in vm_image.lower():
+                    if 'pfSense' not in self.inventory:
+                        self.inventory['pfSense'] = {'hosts':[], 'vars': {}}
+                    self.inventory['pfSense']['hosts'].append(dest)
+                if 'windows' in vm_image.lower():
+                    if 'Windows' not in self.inventory:
+                        self.inventory['Windows'] = {'hosts':[], 'vars': {}}
+                    self.inventory['Windows']['hosts'].append(dest)
 
     def load_cloudserver_variables_for_host(self):
         '''Generate a JSON response to a --host call'''
